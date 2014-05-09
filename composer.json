@@ -1,7 +1,6 @@
 {
     "name": "mindy/utils",
     "homepage": "http://studio107.ru",
-    "version": "0.7",
     "type": "library",
     "license": "BSD",
     "minimum-stability": "dev",
