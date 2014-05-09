@@ -1,0 +1,27 @@
+{
+    "name": "mindy/utils",
+    "homepage": "http://studio107.ru",
+    "version": "0.7",
+    "type": "library",
+    "license": "BSD",
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": {
+            "": "src/"
+        }
+    },
+    "require": {
+        "php": ">=5.4"
+    },
+    "require-dev": {
+        "satooshi/php-coveralls": "dev-master"
+    },
+    "authors": [
+        {
+            "name": "Maxim Falaleev",
+            "email": "max@studio107.ru",
+            "homepage": "http://studio107.ru",
+            "role": "Developer"
+        }
+    ]
+}
