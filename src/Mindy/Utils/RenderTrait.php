@@ -20,7 +20,7 @@ use Yii;
 
 trait RenderTrait
 {
-    public function render($view, array $data = [])
+    public function renderTemplate($view, array $data = [])
     {
         if ($this->beforeRender($view)) {
             $template = $this->getViewFile($view);
