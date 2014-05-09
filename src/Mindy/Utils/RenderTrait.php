@@ -38,6 +38,19 @@ trait RenderTrait
         return null;
     }
 
+    public static function renderStatic($view, array $data = [])
+    {
+        $template = Yii::app()->finder->find($view);
+        if ($template === null) {
+            throw new Exception("Template not found: $view. Search paths:\n" . implode("\n", Yii::app()->finder->getPaths()));
+        }
+
+        $output = Yii::app()->viewRenderer->render($template, $data);
+        $output = Yii::app()->middleware->processView($output);
+
+        return $output;
+    }
+
     /**
      * This method is invoked at the beginning of {@link render()}.
      * You may override this method to do some preprocessing when rendering a view.
