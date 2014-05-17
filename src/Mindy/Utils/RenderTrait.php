@@ -20,6 +20,11 @@ use Yii;
 
 trait RenderTrait
 {
+    public function renderString($template, array $data = [])
+    {
+        return Yii::app()->viewRenderer->render($template, $data);
+    }
+
     public function renderTemplate($view, array $data = [])
     {
         if ($this->beforeRender($view)) {
