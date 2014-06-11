@@ -41,11 +41,12 @@ trait TitleBreadcrumbsTrait
      * @param $url
      * @return $this
      */
-    public function addBreadcrumb($name, $url = null)
+    public function addBreadcrumb($name, $url = null, $items = [])
     {
         $this->_breadcrumbs[] = [
             'name' => $name,
-            'url' => $url
+            'url' => $url,
+            'items' => $items
         ];
         return $this;
     }
