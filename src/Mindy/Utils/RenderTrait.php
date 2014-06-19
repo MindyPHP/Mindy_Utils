@@ -16,13 +16,14 @@ namespace Mindy\Utils;
 
 
 use Exception;
+use Mindy\Base\Mindy;
 use Yii;
 
 trait RenderTrait
 {
     public function renderString($template, array $data = [])
     {
-        return Yii::app()->viewRenderer->render($template, $data);
+        return Mindy::app()->viewRenderer->render($template, $data);
     }
 
     public function renderTemplate($view, array $data = [])
@@ -30,11 +31,11 @@ trait RenderTrait
         if ($this->beforeRender($view)) {
             $template = $this->getViewFile($view);
             if ($template === null) {
-                throw new Exception("Template not found: $view. Search paths:\n" . implode("\n", Yii::app()->finder->getPaths()));
+                throw new Exception("Template not found: $view. Search paths:\n" . implode("\n", Mindy::app()->finder->getPaths()));
             }
 
-            $output = Yii::app()->viewRenderer->render($template, $data);
-            $output = Yii::app()->middleware->processView($output);
+            $output = Mindy::app()->viewRenderer->render($template, $data);
+            $output = Mindy::app()->middleware->processView($output);
             $this->afterRender($view, $output);
 
             return $output;
@@ -45,13 +46,13 @@ trait RenderTrait
 
     public static function renderStatic($view, array $data = [])
     {
-        $template = Yii::app()->finder->find($view);
+        $template = Mindy::app()->finder->find($view);
         if ($template === null) {
-            throw new Exception("Template not found: $view. Search paths:\n" . implode("\n", Yii::app()->finder->getPaths()));
+            throw new Exception("Template not found: $view. Search paths:\n" . implode("\n", Mindy::app()->finder->getPaths()));
         }
 
-        $output = Yii::app()->viewRenderer->render($template, $data);
-        $output = Yii::app()->middleware->processView($output);
+        $output = Mindy::app()->viewRenderer->render($template, $data);
+        $output = Mindy::app()->middleware->processView($output);
 
         return $output;
     }
@@ -89,6 +90,6 @@ trait RenderTrait
      */
     public function getViewFile($viewName)
     {
-        return Yii::app()->finder->find($viewName);
+        return Mindy::app()->finder->find($viewName);
     }
 }
