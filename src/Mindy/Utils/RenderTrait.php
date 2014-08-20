@@ -29,10 +29,12 @@ trait RenderTrait
     public function renderTemplate($view, array $data = [])
     {
         if ($this->beforeRender($view)) {
-            $output = Mindy::app()->template->render($view, $data);
-            $output = Mindy::app()->middleware->processView($output);
+            $app = Mindy::app();
+            $output = $app->template->render($view, $data);
+            if($app->hasComponent('middleware')) {
+                $output = $app->middleware->processView($output);
+            }
             $this->afterRender($view, $output);
-
             return $output;
         }
 
