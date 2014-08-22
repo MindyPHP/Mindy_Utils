@@ -23,14 +23,26 @@ trait RenderTrait
 {
     public function renderString($source, array $data = [])
     {
-        return Mindy::app()->template->renderString($source, $data);
+        return Mindy::app()->template->renderString($source, $this->mergeData($data));
+    }
+
+    protected function mergeData($data)
+    {
+        if(is_array($data) === false) {
+            $data = [];
+        }
+        $app = Mindy::app();
+        return array_merge($data, [
+            'request' => $app->request,
+            'user' => $app->user
+        ]);
     }
 
     public function renderTemplate($view, array $data = [])
     {
         if ($this->beforeRender($view)) {
             $app = Mindy::app();
-            $output = $app->template->render($view, $data);
+            $output = $app->template->render($view, $this->mergeData($data));
             if($app->hasComponent('middleware')) {
                 $output = $app->middleware->processView($output);
             }
