@@ -17,7 +17,6 @@ namespace Mindy\Utils;
 
 use Exception;
 use Mindy\Base\Mindy;
-use Yii;
 
 trait RenderTrait
 {
