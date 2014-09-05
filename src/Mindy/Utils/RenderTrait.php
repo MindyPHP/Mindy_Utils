@@ -33,8 +33,8 @@ trait RenderTrait
         }
         $app = Mindy::app();
         return array_merge($data, [
-            'request' => $app->request,
-            'user' => $app->user
+            'request' => $app->getComponent('request'),
+            'user' => $app->getComponent('user')
         ]);
     }
 
@@ -42,7 +42,7 @@ trait RenderTrait
     {
         if ($this->beforeRender($view)) {
             $app = Mindy::app();
-            $output = $app->template->render($view, $this->mergeData($data));
+            $output = $app->getComponent('template')->render($view, $this->mergeData($data));
             if($app->hasComponent('middleware')) {
                 $output = $app->middleware->processView($output);
             }
@@ -86,13 +86,31 @@ trait RenderTrait
     }
 
     /**
-     * Returns the view script file according to the specified view name.
-     * This method must be implemented by child classes.
-     * @param string $viewName view name
-     * @return string the file path for the named view. False if the view cannot be found.
+     * Renders a view file.
+     * This method includes the view file as a PHP script
+     * and captures the display result if required.
+     * @param string $_viewFile_ view file
+     * @param array $_data_ data to be extracted and made available to the view file
+     * @param boolean $_return_ whether the rendering result should be returned as a string
+     * @return string the rendering result. Null if the rendering result is not required.
      */
-    public function getViewFile($viewName)
+    public function renderInternal($_viewFile_, $_data_ = null, $_return_ = false)
     {
-        return $viewName;
+        $_viewFile_ = Mindy::app()->finder->find($_viewFile_);
+
+        // we use special variable names here to avoid conflict when extracting data
+        if (is_array($_data_)) {
+            extract($_data_, EXTR_PREFIX_SAME, 'data');
+        } else {
+            $data = $_data_;
+        }
+        if ($_return_) {
+            ob_start();
+            ob_implicit_flush(false);
+            require($_viewFile_);
+            return ob_get_clean();
+        } else {
+            require($_viewFile_);
+        }
     }
 }
