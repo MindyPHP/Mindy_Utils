@@ -25,7 +25,7 @@ trait RenderTrait
         return Mindy::app()->template->renderString($source, $this->mergeData($data));
     }
 
-    protected function mergeData($data)
+    protected static function mergeData($data)
     {
         if(is_array($data) === false) {
             $data = [];
@@ -39,49 +39,12 @@ trait RenderTrait
 
     public function renderTemplate($view, array $data = [])
     {
-        if ($this->beforeRender($view)) {
-            $app = Mindy::app();
-            $output = $app->getComponent('template')->render($view, $this->mergeData($data));
-            if($app->hasComponent('middleware')) {
-                $output = $app->middleware->processView($output);
-            }
-            $this->afterRender($view, $output);
-            return $output;
-        }
-
-        return null;
+        return Mindy::app()->getComponent('template')->render($view, self::mergeData($data));
     }
 
     public static function renderStatic($view, array $data = [])
     {
-        $output = Mindy::app()->template->render($view, $data);
-        $output = Mindy::app()->middleware->processView($output);
-        return $output;
-    }
-
-    /**
-     * This method is invoked at the beginning of {@link render()}.
-     * You may override this method to do some preprocessing when rendering a view.
-     * @param string $view the view to be rendered
-     * @return boolean whether the view should be rendered.
-     * @since 1.1.5
-     */
-    protected function beforeRender($view)
-    {
-        return true;
-    }
-
-    /**
-     * This method is invoked after the specified is rendered by calling {@link render()}.
-     * Note that this method is invoked BEFORE {@link processOutput()}.
-     * You may override this method to do some postprocessing for the view rendering.
-     * @param string $view the view that has been rendered
-     * @param string $output the rendering result of the view. Note that this parameter is passed
-     * as a reference. That means you can modify it within this method.
-     * @since 1.1.5
-     */
-    protected function afterRender($view, &$output)
-    {
+        Mindy::app()->getComponent('template')->render($view, self::mergeData($data));
     }
 
     /**
