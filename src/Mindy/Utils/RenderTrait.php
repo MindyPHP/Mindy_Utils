@@ -37,14 +37,19 @@ trait RenderTrait
         ]);
     }
 
-    public function renderTemplate($view, array $data = [])
+    public static function renderTemplate($view, array $data = [])
     {
         return Mindy::app()->getComponent('template')->render($view, self::mergeData($data));
     }
 
+    /**
+     * @deprecated use renderTemplate
+     * @param $view
+     * @param array $data
+     */
     public static function renderStatic($view, array $data = [])
     {
-        Mindy::app()->getComponent('template')->render($view, self::mergeData($data));
+        return self::renderTemplate($view, $data);
     }
 
     /**
