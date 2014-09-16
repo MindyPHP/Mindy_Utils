@@ -33,7 +33,7 @@ trait RenderTrait
         $app = Mindy::app();
         return array_merge($data, [
             'request' => $app->getComponent('request'),
-            'user' => $app->getComponent('user')
+            'user' => $app->getUser()
         ]);
     }
 
