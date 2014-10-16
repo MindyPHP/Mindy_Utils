@@ -26,7 +26,7 @@ use ArrayAccess;
 use Countable;
 use Iterator;
 use IteratorAggregate;
-use Mindy\Base\Exception\Exception;
+use Mindy\Exception\Exception;
 use Mindy\Base\Mindy;
 use Mindy\Helper\Traits\BehaviorAccessors;
 use Mindy\Helper\Traits\Configurator;
@@ -150,7 +150,7 @@ class BaseList implements IteratorAggregate, ArrayAccess, Countable
         } elseif ($index >= 0 && $index < $this->_c) { // in case the value is null
             return $this->_d[$index];
         } else {
-            throw new Exception(Mindy::t('yii', 'List index "{index}" is out of bound.',
+            throw new Exception(Mindy::t('base', 'List index "{index}" is out of bound.',
                 ['{index}' => $index]));
         }
     }
@@ -183,11 +183,11 @@ class BaseList implements IteratorAggregate, ArrayAccess, Countable
                 array_splice($this->_d, $index, 0, array($item));
                 $this->_c++;
             } else {
-                throw new Exception(Mindy::t('yii', 'List index "{index}" is out of bound.',
+                throw new Exception(Mindy::t('base', 'List index "{index}" is out of bound.',
                     ['{index}' => $index]));
             }
         } else {
-            throw new Exception(Mindy::t('yii', 'The list is read only.'));
+            throw new Exception(Mindy::t('base', 'The list is read only.'));
         }
     }
 
@@ -228,11 +228,11 @@ class BaseList implements IteratorAggregate, ArrayAccess, Countable
                     return $item;
                 }
             } else {
-                throw new Exception(Mindy::t('yii', 'List index "{index}" is out of bound.',
+                throw new Exception(Mindy::t('base', 'List index "{index}" is out of bound.',
                     ['{index}' => $index]));
             }
         } else {
-            throw new Exception(Mindy::t('yii', 'The list is read only.'));
+            throw new Exception(Mindy::t('base', 'The list is read only.'));
         }
     }
 
@@ -295,7 +295,7 @@ class BaseList implements IteratorAggregate, ArrayAccess, Countable
                 $this->add($item);
             }
         } elseif ($data !== null) {
-            throw new Exception(Mindy::t('yii', 'List data must be an array or an object implementing Traversable.'));
+            throw new Exception(Mindy::t('base', 'List data must be an array or an object implementing Traversable.'));
         }
     }
 
@@ -315,7 +315,7 @@ class BaseList implements IteratorAggregate, ArrayAccess, Countable
                 $this->add($item);
             }
         } elseif ($data !== null) {
-            throw new Exception(Mindy::t('yii', 'List data must be an array or an object implementing Traversable.'));
+            throw new Exception(Mindy::t('base', 'List data must be an array or an object implementing Traversable.'));
         }
     }
 

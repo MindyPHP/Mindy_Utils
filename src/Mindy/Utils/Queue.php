@@ -13,7 +13,7 @@ namespace Mindy\Base;
 use Countable;
 use Iterator;
 use IteratorAggregate;
-use Mindy\Base\Exception\Exception;
+use Mindy\Exception\Exception;
 use Mindy\Helper\Traits\BehaviorAccessors;
 use Mindy\Helper\Traits\Configurator;
 use Traversable;
@@ -89,7 +89,7 @@ class Queue implements IteratorAggregate, Countable
                 ++$this->_c;
             }
         } elseif ($data !== null)
-            throw new Exception(Mindy::t('yii', 'Queue data must be an array or an object implementing Traversable.'));
+            throw new Exception(Mindy::t('base', 'Queue data must be an array or an object implementing Traversable.'));
     }
 
     /**
@@ -118,7 +118,7 @@ class Queue implements IteratorAggregate, Countable
     public function peek()
     {
         if ($this->_c === 0)
-            throw new Exception(Mindy::t('yii', 'The queue is empty.'));
+            throw new Exception(Mindy::t('base', 'The queue is empty.'));
         else
             return $this->_d[0];
     }
@@ -131,7 +131,7 @@ class Queue implements IteratorAggregate, Countable
     public function dequeue()
     {
         if ($this->_c === 0)
-            throw new Exception(Mindy::t('yii', 'The queue is empty.'));
+            throw new Exception(Mindy::t('base', 'The queue is empty.'));
         else {
             --$this->_c;
             return array_shift($this->_d);

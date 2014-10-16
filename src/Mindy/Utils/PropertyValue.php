@@ -14,7 +14,7 @@
 
 namespace Mindy\Base;
 
-use Mindy\Base\Exception\Exception;
+use Mindy\Exception\Exception;
 use ReflectionClass;
 
 /**
@@ -165,7 +165,7 @@ class PropertyValue
         if ($types[$enumType]->hasConstant($value))
             return $value;
         else
-            throw new Exception(Mindy::t('yii', 'Invalid enumerable value "{value}". Please make sure it is among ({enum}).',
+            throw new Exception(Mindy::t('base', 'Invalid enumerable value "{value}". Please make sure it is among ({enum}).',
                 array('{value}' => $value, '{enum}' => implode(', ', $types[$enumType]->getConstants()))));
     }
 }

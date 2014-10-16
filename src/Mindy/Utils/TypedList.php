@@ -10,7 +10,7 @@ namespace Mindy\Base;
  * @copyright 2008-2013 Yii Software LLC
  * @license http://www.yiiframework.com/license/
  */
-use Mindy\Base\Exception\Exception;
+use Mindy\Exception\Exception;
 
 /**
  * CTypedList represents a list whose items are of the certain type.
@@ -49,7 +49,7 @@ class TypedList extends BaseList
         if ($item instanceof $this->_type) {
             parent::insertAt($index, $item);
         } else {
-            throw new Exception(Mindy::t('yii', 'CTypedList<{type}> can only hold objects of {type} class.', ['{type}' => $this->_type]));
+            throw new Exception(Mindy::t('base', 'CTypedList<{type}> can only hold objects of {type} class.', ['{type}' => $this->_type]));
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Mindy\Base;
  * @copyright 2008-2013 Yii Software LLC
  * @license http://www.yiiframework.com/license/
  */
-use Mindy\Base\Exception\Exception;
+use Mindy\Exception\Exception;
 
 /**
  * CTypedMap represents a map whose items are of the certain type.
@@ -49,7 +49,7 @@ class TypedMap extends Map
         if ($item instanceof $this->_type) {
             parent::add($index, $item);
         } else {
-            throw new Exception(Mindy::t('yii', 'CTypedMap<{type}> can only hold objects of {type} class.', ['{type}' => $this->_type]));
+            throw new Exception(Mindy::t('base', 'CTypedMap<{type}> can only hold objects of {type} class.', ['{type}' => $this->_type]));
         }
     }
 }

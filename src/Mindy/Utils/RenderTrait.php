@@ -22,7 +22,7 @@ trait RenderTrait
 {
     public function renderString($source, array $data = [])
     {
-        return Mindy::app()->template->renderString($source, $this->mergeData($data));
+        return Mindy::app()->getComponent('template')->renderString($source, $this->mergeData($data));
     }
 
     protected static function mergeData($data)
