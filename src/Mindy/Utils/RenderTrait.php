@@ -14,7 +14,6 @@
 
 namespace Mindy\Utils;
 
-
 use Exception;
 use Mindy\Base\Mindy;
 
