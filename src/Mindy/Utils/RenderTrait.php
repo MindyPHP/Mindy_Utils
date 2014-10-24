@@ -62,8 +62,6 @@ trait RenderTrait
      */
     public function renderInternal($_viewFile_, $_data_ = null, $_return_ = false)
     {
-        $_viewFile_ = Mindy::app()->finder->find($_viewFile_);
-
         // we use special variable names here to avoid conflict when extracting data
         if (is_array($_data_)) {
             extract($_data_, EXTR_PREFIX_SAME, 'data');
