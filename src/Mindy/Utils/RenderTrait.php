@@ -1,22 +1,14 @@
 <?php
-/**
- *
- *
- * All rights reserved.
- *
- * @author Falaleev Maxim
- * @email max@studio107.ru
- * @version 1.0
- * @company Studio107
- * @site http://studio107.ru
- * @date 09/04/14.04.2014 16:26
- */
 
 namespace Mindy\Utils;
 
 use Exception;
 use Mindy\Base\Mindy;
 
+/**
+ * Class RenderTrait
+ * @package Mindy\Utils
+ */
 trait RenderTrait
 {
     public function renderString($source, array $data = [])

@@ -1,27 +1,7 @@
 <?php
-/**
- *
- *
- * All rights reserved.
- *
- * @author Falaleev Maxim
- * @email max@studio107.ru
- * @version 1.0
- * @company Studio107
- * @site http://studio107.ru
- * @date 10/06/14.06.2014 13:21
- */
 
 namespace Mindy\Utils;
 
-/**
- * CListIterator class file.
- *
- * @author Qiang Xue <qiang.xue@gmail.com>
- * @link http://www.yiiframework.com/
- * @copyright 2008-2013 Yii Software LLC
- * @license http://www.yiiframework.com/license/
- */
 use Iterator;
 
 /**
@@ -30,7 +10,7 @@ use Iterator;
  * It allows CList to return a new iterator for traversing the items in the list.
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
- * @package system.collections
+ * @package Mindy\Utils
  * @since 1.0
  */
 class BaseListIterator implements Iterator

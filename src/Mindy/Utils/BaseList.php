@@ -1,27 +1,7 @@
 <?php
-/**
- *
- *
- * All rights reserved.
- *
- * @author Falaleev Maxim
- * @email max@studio107.ru
- * @version 1.0
- * @company Studio107
- * @site http://studio107.ru
- * @date 10/06/14.06.2014 13:20
- */
 
 namespace Mindy\Utils;
 
-/**
- * This file contains classes implementing list feature.
- *
- * @author Qiang Xue <qiang.xue@gmail.com>
- * @link http://www.yiiframework.com/
- * @copyright 2008-2013 Yii Software LLC
- * @license http://www.yiiframework.com/license/
- */
 use ArrayAccess;
 use Countable;
 use Iterator;
@@ -56,7 +36,7 @@ use Traversable;
  * @property integer $count The number of items in the list.
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
- * @package system.collections
+ * @package Mindy\Utils
  * @since 1.0
  */
 class BaseList implements IteratorAggregate, ArrayAccess, Countable
