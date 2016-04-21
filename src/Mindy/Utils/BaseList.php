@@ -41,7 +41,7 @@ use Traversable;
  */
 class BaseList implements IteratorAggregate, ArrayAccess, Countable
 {
-    use Configurator, BehaviorAccessors;
+    use Configurator;
 
     /**
      * @var array internal data storage

@@ -2,7 +2,6 @@
     "name": "mindy/utils",
     "homepage": "http://studio107.ru",
     "type": "library",
-    "version": "0.1",
     "license": "BSD",
     "autoload": {
         "psr-4": {
